@@ -1,0 +1,85 @@
+# ====================================================================
+# Animal Crossing: New Horizons PC (.gitignore)
+# ====================================================================
+
+# Nintendo Switch game files, keys, shaders & local saves
+*.nsp
+*.xci
+*.nsz
+*.xcz
+*.nca
+*.nso
+*.npdm
+*.keys
+*.tik
+*.cert
+*.spv
+*.bin
+*.bfsha
+*.bntx
+*.szs
+*.zs
+*.sarc
+*.bfres
+*.dat
+exefs/
+romfs/
+extract/
+aoc/
+GameDump/
+NSP_Backup/
+private/
+user/
+saves/
+
+# Build outputs & binaries
+build/
+out/
+gen/
+bin/
+obj/
+*.exe
+*.dll
+*.lib
+*.pdb
+*.ilk
+*.exp
+*.o
+*.obj
+*.a
+
+# Source code & tooling (excluded from release-only repository)
+src/
+recomp/
+runtime/
+launcher/
+games/
+tests/
+tools/
+android/
+CMakeLists.txt
+*.c
+*.cc
+*.cpp
+*.h
+*.hpp
+*.inc
+*.py
+*.sh
+*.command
+*.bat
+*.ps1
+
+# Tooling / Archives / Logs
+*.zip
+*.7z
+*.tar.gz
+*.rar
+.vs/
+.vscode/
+.idea/
+*.log
+*.err
+imgui.ini
+__pycache__/
+.DS_Store

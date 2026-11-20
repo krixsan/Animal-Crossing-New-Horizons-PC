@@ -1,0 +1,340 @@
+{
+  "$schema": "https://recomplauncher.com/schema/recomplauncher.json",
+  "format": 1,
+  "name": "Animal Crossing: New Horizons PC",
+  "repo": "krixsan/Animal-Crossing-New-Horizons-PC",
+  "requires": [
+    "start",
+    "files.folder",
+    "settings.ini",
+    "settings.choices",
+    "settings.slider",
+    "settings.groups"
+  ],
+  "game": {
+    "kind": "folder",
+    "label": "Your prepared Animal Crossing: New Horizons game folder containing game/windows-x64/acnh_game.dll (or a full private/acnh-* build with build/acnh.exe, analysis/, exefs/, and extract/romfs/).",
+    "check": {
+      "file": "exefs/main"
+    }
+  },
+  "start": {
+    "program": [
+      "Animal Crossing Launcher.exe",
+      "acnh.exe"
+    ],
+    "env": {
+      "NX_DATA_ROOT": "{game}"
+    }
+  },
+  "config": [
+    {
+      "id": "main",
+      "format": "ini",
+      "file": [
+        {
+          "path": "{game}/config.ini"
+        }
+      ],
+      "new": {
+        "game.language": "auto",
+        "video.fullscreen": "0",
+        "video.mode": "docked",
+        "video.window": "auto",
+        "video.aspect": "auto",
+        "video.upscaler": "fsr",
+        "video.fsr_sharpness_pct": "85",
+        "video.temporal": "off",
+        "video.antialiasing": "off",
+        "video.anisotropy": "16",
+        "video.frame_rate": "30",
+        "video.frame_gen": "off",
+        "video.vsync": "1",
+        "video.show_fps": "0",
+        "audio.reverb": "1"
+      }
+    }
+  ],
+  "settings": [
+    {
+      "id": "fullscreen",
+      "label": "Display mode",
+      "group": "Display",
+      "choices": [
+        {
+          "label": "Windowed",
+          "set": {
+            "video.fullscreen": "0"
+          }
+        },
+        {
+          "label": "Fullscreen",
+          "set": {
+            "video.fullscreen": "1"
+          }
+        }
+      ],
+      "defaults": {
+        "video.fullscreen": "0"
+      }
+    },
+    {
+      "id": "mode",
+      "label": "Console render mode",
+      "group": "Display",
+      "choices": [
+        {
+          "label": "1080p (TV / Docked)",
+          "set": {
+            "video.mode": "docked"
+          }
+        },
+        {
+          "label": "720p (Handheld)",
+          "set": {
+            "video.mode": "handheld"
+          }
+        }
+      ],
+      "defaults": {
+        "video.mode": "docked"
+      }
+    },
+    {
+      "id": "aspect",
+      "label": "Aspect ratio",
+      "group": "Display",
+      "choices": [
+        {
+          "label": "Auto",
+          "set": {
+            "video.aspect": "auto"
+          }
+        },
+        {
+          "label": "16:9",
+          "set": {
+            "video.aspect": "16:9"
+          }
+        },
+        {
+          "label": "16:10",
+          "set": {
+            "video.aspect": "16:10"
+          }
+        },
+        {
+          "label": "21:9 (Ultrawide)",
+          "set": {
+            "video.aspect": "21:9"
+          }
+        },
+        {
+          "label": "32:9 (Super Ultrawide)",
+          "set": {
+            "video.aspect": "32:9"
+          }
+        }
+      ],
+      "defaults": {
+        "video.aspect": "auto"
+      }
+    },
+    {
+      "id": "frame_rate",
+      "label": "Frame rate",
+      "group": "Performance",
+      "choices": [
+        {
+          "label": "30 FPS (Console timing)",
+          "set": {
+            "video.frame_rate": "30"
+          }
+        },
+        {
+          "label": "60 FPS (SpeedFix)",
+          "set": {
+            "video.frame_rate": "60"
+          }
+        },
+        {
+          "label": "60 FPS (Native)",
+          "set": {
+            "video.frame_rate": "60native"
+          }
+        }
+      ],
+      "defaults": {
+        "video.frame_rate": "30"
+      }
+    },
+    {
+      "id": "frame_gen",
+      "label": "Frame generation",
+      "group": "Performance",
+      "choices": [
+        {
+          "label": "Off",
+          "set": {
+            "video.frame_gen": "off"
+          }
+        },
+        {
+          "label": "AMD FSR 3 Frame Generation",
+          "set": {
+            "video.frame_gen": "fsr"
+          }
+        }
+      ],
+      "defaults": {
+        "video.frame_gen": "off"
+      }
+    },
+    {
+      "id": "upscaler",
+      "label": "Upscaling",
+      "group": "Graphics",
+      "choices": [
+        {
+          "label": "AMD FSR 1 + RCAS",
+          "set": {
+            "video.upscaler": "fsr"
+          }
+        },
+        {
+          "label": "Linear",
+          "set": {
+            "video.upscaler": "linear"
+          }
+        }
+      ],
+      "defaults": {
+        "video.upscaler": "fsr"
+      }
+    },
+    {
+      "id": "sharpness",
+      "label": "FSR sharpness (%)",
+      "group": "Graphics",
+      "slider": {
+        "key": "video.fsr_sharpness_pct",
+        "min": 0,
+        "max": 100,
+        "step": 5,
+        "format": "%.0f"
+      },
+      "defaults": {
+        "video.fsr_sharpness_pct": "85"
+      }
+    },
+    {
+      "id": "temporal",
+      "label": "Temporal AA",
+      "group": "Graphics",
+      "choices": [
+        {
+          "label": "Off",
+          "set": {
+            "video.temporal": "off"
+          }
+        },
+        {
+          "label": "AMD FSR",
+          "set": {
+            "video.temporal": "fsr"
+          }
+        },
+        {
+          "label": "NVIDIA DLAA",
+          "set": {
+            "video.temporal": "dlaa"
+          }
+        }
+      ],
+      "defaults": {
+        "video.temporal": "off"
+      }
+    },
+    {
+      "id": "anisotropy",
+      "label": "Texture filtering",
+      "group": "Graphics",
+      "choices": [
+        {
+          "label": "Game default",
+          "set": {
+            "video.anisotropy": "game"
+          }
+        },
+        {
+          "label": "4x",
+          "set": {
+            "video.anisotropy": "4"
+          }
+        },
+        {
+          "label": "8x",
+          "set": {
+            "video.anisotropy": "8"
+          }
+        },
+        {
+          "label": "16x",
+          "set": {
+            "video.anisotropy": "16"
+          }
+        }
+      ],
+      "defaults": {
+        "video.anisotropy": "16"
+      }
+    },
+    {
+      "id": "show_fps",
+      "label": "Show FPS counter",
+      "group": "Performance",
+      "choices": [
+        {
+          "label": "Off",
+          "set": {
+            "video.show_fps": "0"
+          }
+        },
+        {
+          "label": "On",
+          "set": {
+            "video.show_fps": "1"
+          }
+        }
+      ],
+      "defaults": {
+        "video.show_fps": "0"
+      }
+    }
+  ],
+  "groups": [
+    {
+      "id": "Display"
+    },
+    {
+      "id": "Graphics"
+    },
+    {
+      "id": "Performance"
+    }
+  ],
+  "actions": [
+    {
+      "id": "saves",
+      "label": "Save data",
+      "help": "Open island save folder.",
+      "open": "{game}/user/device_save"
+    },
+    {
+      "id": "mods",
+      "label": "Mod folder",
+      "help": "Open LayeredFS RomFS mods folder.",
+      "open": "{game}/mods"
+    }
+  ]
+}
